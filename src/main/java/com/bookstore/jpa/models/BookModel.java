@@ -5,6 +5,7 @@ import java.util.HashSet;
 import java.util.Set;
 import java.util.UUID;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -14,6 +15,7 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
 @Entity // Indica que a classe BookModel é uma entidade JPA
@@ -39,6 +41,9 @@ public class BookModel implements Serializable {
         inverseJoinColumns= @JoinColumn(name="author_id")
     )
     private Set<AuthorModel> authors = new HashSet<>();
+
+    @OneToOne(mappedBy= "book", cascade = CascadeType.ALL)
+    private ReviewModel review;
 
 
 
@@ -76,6 +81,14 @@ public class BookModel implements Serializable {
 
     public void setAuthors(Set<AuthorModel> authors) {
         this.authors = authors;
+    }
+
+    public ReviewModel getReview() {
+        return review;
+    }
+
+    public void setReview(ReviewModel review) {
+        this.review = review;
     }
     
 
