@@ -1,6 +1,8 @@
 package com.bookstore.jpa.models;
 
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.UUID;
 
 import jakarta.persistence.Column;
@@ -9,6 +11,8 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
@@ -27,6 +31,16 @@ public class BookModel implements Serializable {
     @ManyToOne // Define a relação com a tabela Publisher de muito livros para uma editora
     @JoinColumn(name="publisher_id") // Define a chave estrangeira que liga as tabelas
     private PublisherModel publisher;
+
+    @ManyToMany
+    @JoinTable( // Criando tabela auxiliar para relacionar book e author
+        name = "tb_book_author",
+        joinColumns= @JoinColumn(name = "book_id"),
+        inverseJoinColumns= @JoinColumn(name="author_id")
+    )
+    private Set<AuthorModel> authors = new HashSet<>();
+
+
 
     public UUID getId() {
         return id;
@@ -54,6 +68,14 @@ public class BookModel implements Serializable {
 
     public void setPublisher(PublisherModel publisher) {
         this.publisher = publisher;
+    }
+
+    public Set<AuthorModel> getAuthors() {
+        return authors;
+    }
+
+    public void setAuthors(Set<AuthorModel> authors) {
+        this.authors = authors;
     }
     
 
