@@ -5,9 +5,12 @@ import java.util.HashSet;
 import java.util.Set;
 import java.util.UUID;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -34,7 +37,8 @@ public class BookModel implements Serializable {
     @JoinColumn(name="publisher_id") // Define a chave estrangeira que liga as tabelas
     private PublisherModel publisher;
 
-    @ManyToMany
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+    @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable( // Criando tabela auxiliar para relacionar book e author
         name = "tb_book_author",
         joinColumns= @JoinColumn(name = "book_id"),
