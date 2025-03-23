@@ -58,7 +58,7 @@ Acesse o **H2 Console** através de `http://localhost:8080/h2-console` e use `jd
 
 1. Clone este repositório:
    ```sh
-   git clone https://github.com/laurabonilha/prj_Bookstore_JPA.git
+   git clone https://github.com/laurabonilha/bookstore-api.git
    ```
 2. Acesse o diretório do projeto:
    ```sh
@@ -71,4 +71,23 @@ Acesse o **H2 Console** através de `http://localhost:8080/h2-console` e use `jd
 4. A API estará disponível em `http://localhost:8080/bookstore/books`
 
 ---
+
+## 🚧 Melhorias em Progresso
+
+Estou constantemente aprimorando a API para torná-la mais robusta e fácil de usar. Atualmente, estou trabalhando nas seguintes melhorias:
+
+⚙️ **Novos Endpoints:** Planejamento para adicionar novos endpoints para recursos como atualização de itens, filtragem avançada e buscas específicas.
+
+🎨 **Interface Gráfica:** Em andamento a criação de uma interface gráfica simples para facilitar a visualização dos cursos cadastrados e permitir a inserção de novos dados diretamente pela interface.
+
+🛠 **Otimizações de Performance:** Foco em melhorias para garantir que a API seja mais eficiente e escalável conforme o número de requisições aumente.
+
+🔐 **Autenticação e Segurança:** Implementação de mecanismos de autenticação para garantir maior segurança nas interações com a API.
+
+Fique à vontade para contribuir e sugerir outras melhorias!
+
+---
+
+## 👨‍💻 Autor
+Desenvolvido com 💙 por **[Laura Bonilha](https://github.com/laurabonilha)** 🚀
 
